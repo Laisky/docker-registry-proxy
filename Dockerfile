@@ -1,4 +1,4 @@
-FROM nginx:1.7
+FROM nginx:1.9
 
 MAINTAINER Container Solutions <info@container-solutions.com>
 

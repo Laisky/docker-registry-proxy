@@ -23,10 +23,11 @@ docker run -p 443:443 \
 	-e REGISTRY_HOST="docker-registry" \
 	-e REGISTRY_PORT="5000" \
 	-e SERVER_NAME="localhost" \
+    -e BUILDER_IP="<THE_ADDRESS_YOU_CAN_PUSH>" \
 	--link docker-registry:docker-registry \
 	-v $(pwd)/.htpasswd:/etc/nginx/.htpasswd:ro \
 	-v $(pwd)/certs:/etc/nginx/ssl:ro \
-	containersol/docker-registry-proxy
+	ppcelery/docker-registry-proxy
 ```
 
 ## Volumes

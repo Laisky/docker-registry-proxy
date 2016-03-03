@@ -22,10 +22,8 @@ Then run the proxy:
 docker run -p 443:443 \
 	-e REGISTRY_HOST="docker-registry" \
 	-e REGISTRY_PORT="5000" \
-	-e SERVER_NAME="localhost" \
     -e BUILDER_IP="<THE_ADDRESS_YOU_CAN_PUSH>" \
 	--link docker-registry:docker-registry \
-	-v $(pwd)/.htpasswd:/etc/nginx/.htpasswd:ro \
 	-v $(pwd)/certs:/etc/nginx/ssl:ro \
 	ppcelery/docker-registry-proxy
 ```
@@ -41,3 +39,15 @@ docker run -p 443:443 \
 - REGISTRY_PORT ... port number of the registry container
 - SERVER_NAME ... nginx server_name directive value
 
+## keys
+
+  - add `10.47.12.82    sit-registry:443` to `/etc/hosts`
+  - copy `./keys/docker-registry.crt` to `/etc/docker/certs.d/sit-registry:443/ca.crt`
+
+## Usage
+
+```sh
+$ sudo docker pull hello-world
+$ sudo docekr tag hello-world sit-registry:443/hello-world
+$ sudo docker push sit-registry:443/hello-world
+```

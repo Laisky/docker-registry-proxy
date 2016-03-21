@@ -2,13 +2,13 @@ version: "2"
 services:
   docker-registry:
     image: registry:2
-    container_name: docker-registry
+    restart: always
     volumes:
       - /opt/docker/registry/data:/tmp/registry-dev
 
   docker-registry-proxy:
     image: ppcelery/docker-registry-proxy
-    container_name: docker-registry-proxy
+    restart: always
     ports:
       - "443:443"
     links:

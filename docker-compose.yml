@@ -25,7 +25,7 @@ services:
     links:
       - docker-registry:registry
     environment:
-      ENV_MODE_BROWSE_ONLY: true
+      ENV_MODE_BROWSE_ONLY: "false"
       ENV_DOCKER_REGISTRY_HOST: registry
       ENV_DOCKER_REGISTRY_PORT: 5000
 
